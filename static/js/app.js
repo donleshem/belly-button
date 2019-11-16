@@ -51,16 +51,18 @@ function buildCharts(sample) {
     //Pie Chart
     d3.json(plotData).then(function(data){
       console.log(data);
-      var values = data.sample_values.slice(0,11);
-      var labels = data.otu_ids.slice(0,11);
-      var display = data.otu_labels.slice(0,11);
+      var sample_values = data.sample_values.slice(0,10);
+      var sample_labels = data.otu_ids.slice(0,10);
+      var sample_names = data.otu_labels.slice(0,10);
 
       var trace2 = [{
-        values: values,
-        lables: labels,
-        hovertext: display,
+        values: sample_values,
+        labels: sample_labels,
+        hovertext: sample_names,
         type: "pie"
       }];
+
+
       Plotly.newPlot('pie',trace2);
     });
   });
